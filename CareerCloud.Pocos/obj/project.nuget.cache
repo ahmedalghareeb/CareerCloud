@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "RMq9pm+0HiSIdRnzVoho6VwE87CjKu2ADih5hyj2raivHAYlMdq5ovgUfBF84yXmMGbn3J7vzNSL1PEAS3lmNQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\asgha\\source\\repos\\CareerCloud\\CareerCloud.Pocos\\CareerCloud.Pocos.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\asgha\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\asgha\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\asgha\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}
