@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareerCloud.Pocos", "CareerCloud.Pocos\CareerCloud.Pocos.csproj", "{E13AE0C5-125B-494D-9400-35BC44DD69E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareerCloud.Pocos", "CareerCloud.Pocos\CareerCloud.Pocos.csproj", "{E13AE0C5-125B-494D-9400-35BC44DD69E0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareerCloudCore.UnitTests.Assignment1", "CareerCloudCore.UnitTests.Assignment1\CareerCloudCore.UnitTests.Assignment1\CareerCloudCore.UnitTests.Assignment1.csproj", "{A204CBDB-E6CF-41D9-82E9-D946D5CBCDE9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareerCloud.DataAccessLayer", "CareerCloud.DataAccessLayer\CareerCloud.DataAccessLayer.csproj", "{1E514878-61D6-4F3E-9579-522FADB7A95F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareerCloud.ADODataAccessLayer", "CareerCloud.ADODataAccessLayer\CareerCloud.ADODataAccessLayer.csproj", "{7630D6B3-2734-4CD4-A0D6-6A1B2A52FE3E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareerCloudCore.UnitTests.Assignment2", "CareerCloudCore.UnitTests.Assignment2\CareerCloudCore.UnitTests.Assignment2.csproj", "{CFB75AEA-6A85-4BB3-B8BA-096D348993DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{A204CBDB-E6CF-41D9-82E9-D946D5CBCDE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A204CBDB-E6CF-41D9-82E9-D946D5CBCDE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A204CBDB-E6CF-41D9-82E9-D946D5CBCDE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E514878-61D6-4F3E-9579-522FADB7A95F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E514878-61D6-4F3E-9579-522FADB7A95F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E514878-61D6-4F3E-9579-522FADB7A95F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E514878-61D6-4F3E-9579-522FADB7A95F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7630D6B3-2734-4CD4-A0D6-6A1B2A52FE3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7630D6B3-2734-4CD4-A0D6-6A1B2A52FE3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7630D6B3-2734-4CD4-A0D6-6A1B2A52FE3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7630D6B3-2734-4CD4-A0D6-6A1B2A52FE3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFB75AEA-6A85-4BB3-B8BA-096D348993DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFB75AEA-6A85-4BB3-B8BA-096D348993DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFB75AEA-6A85-4BB3-B8BA-096D348993DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFB75AEA-6A85-4BB3-B8BA-096D348993DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
