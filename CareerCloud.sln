@@ -19,7 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareerCloudCore.UnitTests.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareerCloudCore.UnitTests.Assignment4", "CareerCloudCore.UnitTests.Assignment4\CareerCloudCore.UnitTests.Assignment4.csproj", "{19DA2892-ED07-4C79-9154-55B3C7076EC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareerCloud.EntityFrameworkDataAccess", "CareerCloud.EntityFrameworkDataAccess\CareerCloud.EntityFrameworkDataAccess.csproj", "{B6647247-F03C-4C9D-B945-ED52D9148723}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareerCloud.EntityFrameworkDataAccess", "CareerCloud.EntityFrameworkDataAccess\CareerCloud.EntityFrameworkDataAccess.csproj", "{B6647247-F03C-4C9D-B945-ED52D9148723}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareerCloud.WebAPI", "CareerCloud.WebAPI\CareerCloud.WebAPI.csproj", "{8F05C57B-875E-49D0-9776-6A45ABC05D4F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareerCloudCore.UnitTests.Assignment5", "CareerCloudCore.UnitTests.Assignment5\CareerCloudCore.UnitTests.Assignment5.csproj", "{A1AE385E-4146-47A5-99A7-86AB4DBBCAEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +67,14 @@ Global
 		{B6647247-F03C-4C9D-B945-ED52D9148723}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6647247-F03C-4C9D-B945-ED52D9148723}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6647247-F03C-4C9D-B945-ED52D9148723}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F05C57B-875E-49D0-9776-6A45ABC05D4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F05C57B-875E-49D0-9776-6A45ABC05D4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F05C57B-875E-49D0-9776-6A45ABC05D4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F05C57B-875E-49D0-9776-6A45ABC05D4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1AE385E-4146-47A5-99A7-86AB4DBBCAEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1AE385E-4146-47A5-99A7-86AB4DBBCAEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1AE385E-4146-47A5-99A7-86AB4DBBCAEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1AE385E-4146-47A5-99A7-86AB4DBBCAEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

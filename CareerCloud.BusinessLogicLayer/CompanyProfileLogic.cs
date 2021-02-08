@@ -27,23 +27,32 @@ namespace CareerCloud.BusinessLogicLayer
             List<ValidationException> exceptions = new List<ValidationException>();
             foreach (CompanyProfilePoco poco in pocos)
             {
-                if(string.IsNullOrEmpty(poco.CompanyWebsite))
+                if(String.IsNullOrEmpty(poco.CompanyWebsite) || !Regex.IsMatch(poco.CompanyWebsite,@".*(\.com$|\.ca$|\.biz$)"))
                 {
-                    exceptions.Add(new ValidationException(600, "must ends in .ca , .com, or .biz"));
+                    exceptions.Add(new ValidationException(600, "Valid website must end with .com , .ca , or .biz"));
                 }
-                else if (!poco.CompanyWebsite.EndsWith(".ca") || !poco.CompanyWebsite.EndsWith(".com") 
-                    || !poco.CompanyWebsite.EndsWith(".biz"))
+
+                if (String.IsNullOrEmpty(poco.ContactPhone) || !Regex.IsMatch(poco.ContactPhone, @"^\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$"))
                 {
-                    exceptions.Add(new ValidationException(600, "must ends in .ca , .com, or .biz"));
+                    exceptions.Add(new ValidationException(600, "valid phone number must be XXX-XXX-XXXX"));
                 }
-                if (string.IsNullOrEmpty(poco.ContactPhone))
-                {
-                    exceptions.Add(new ValidationException(601, "phone number must mach XXX-XXX-XXXX"));
-                }
-                else if (!Regex.Match(poco.ContactPhone, @"^(\+[0-9]{10})$").Success)
-                {
-                    exceptions.Add(new ValidationException(601, "phone number must mach XXX-XXX-XXXX"));
-                }
+                //if(string.IsNullOrEmpty(poco.CompanyWebsite))
+                //{
+                //    exceptions.Add(new ValidationException(600, "must ends in .ca , .com, or .biz"));
+                //}
+                //else if (!poco.CompanyWebsite.EndsWith(".ca") || !poco.CompanyWebsite.EndsWith(".com") 
+                //    || !poco.CompanyWebsite.EndsWith(".biz"))
+                //{
+                //    exceptions.Add(new ValidationException(600, "must ends in .ca , .com, or .biz"));
+                //}
+                //if (string.IsNullOrEmpty(poco.ContactPhone))
+                //{
+                //    exceptions.Add(new ValidationException(601, "phone number must mach XXX-XXX-XXXX"));
+                //}
+                //else if (!Regex.Match(poco.ContactPhone, @"^(\+[0-9]{10})$").Success)
+                //{
+                //    exceptions.Add(new ValidationException(601, "phone number must mach XXX-XXX-XXXX"));
+                //}
                 if (exceptions.Count > 0)
                 {
                     throw new AggregateException(exceptions);
