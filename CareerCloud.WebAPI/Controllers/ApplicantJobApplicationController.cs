@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http.Description;
 
 namespace CareerCloud.WebAPI.Controllers
 {
@@ -24,6 +25,7 @@ namespace CareerCloud.WebAPI.Controllers
 
         [HttpGet]
         [Route("application/{applicantJobApplicationId}")]
+        [ResponseType(typeof(ApplicantJobApplicationPoco))]
         public ActionResult GetApplicantJobApplication(Guid applicantJobApplicationId)
         {
 
@@ -39,7 +41,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("application/")]
+        [Route("application")]
+        [ResponseType(typeof(List<ApplicantJobApplicationPoco>))]
         public ActionResult GetAllApplicantJobApplication()
         {
 
@@ -55,23 +58,23 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("application/")]
-        public ActionResult PostApplicantJobApplication(ApplicantJobApplicationPoco[] applicantJobApplicationPocos)
+        [Route("application")]
+        public ActionResult PostApplicantJobApplication([FromBody] ApplicantJobApplicationPoco[] applicantJobApplicationPocos)
         {
             _logic.Add(applicantJobApplicationPocos);
             return Ok();
         }
 
         [HttpPut]
-        [Route("application/")]
-        public ActionResult PutApplicantJobApplication(ApplicantJobApplicationPoco[] applicantJobApplicationPocos)
+        [Route("application")]
+        public ActionResult PutApplicantJobApplication([FromBody] ApplicantJobApplicationPoco[] applicantJobApplicationPocos)
         {
             _logic.Update(applicantJobApplicationPocos);
             return Ok();
         }
         [HttpDelete]
-        [Route("application/")]
-        public ActionResult DeleteApplicantJobApplication(ApplicantJobApplicationPoco[] applicantJobApplicationPocos)
+        [Route("application")]
+        public ActionResult DeleteApplicantJobApplication([FromBody] ApplicantJobApplicationPoco[] applicantJobApplicationPocos)
         {
             _logic.Delete(applicantJobApplicationPocos);
             return Ok();

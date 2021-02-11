@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http.Description;
 
 namespace CareerCloud.WebAPI.Controllers
 {
@@ -24,6 +25,7 @@ namespace CareerCloud.WebAPI.Controllers
 
         [HttpGet]
         [Route("resume/{applicantResumeId}")]
+        [ResponseType(typeof(ApplicantResumePoco))]
         public ActionResult GetApplicantResume(Guid applicantResumeId)
         {
 
@@ -39,7 +41,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("resume/}")]
+        [Route("resume")]
+        [ResponseType(typeof(List<ApplicantResumePoco>))]
         public ActionResult GetAllApplicantResume()
         {
 
@@ -55,23 +58,23 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("resume/")]
-        public ActionResult PostApplicantResume(ApplicantResumePoco[] applicantResumePocos)
+        [Route("resume")]
+        public ActionResult PostApplicantResume([FromBody] ApplicantResumePoco[] applicantResumePocos)
         {
             _logic.Add(applicantResumePocos);
             return Ok();
         }
 
         [HttpPut]
-        [Route("resume/")]
-        public ActionResult PutApplicantResume(ApplicantResumePoco[] applicantResumePocos)
+        [Route("resume")]
+        public ActionResult PutApplicantResume([FromBody] ApplicantResumePoco[] applicantResumePocos)
         {
             _logic.Update(applicantResumePocos);
             return Ok();
         }
         [HttpDelete]
-        [Route("resume/")]
-        public ActionResult DeleteApplicantResume(ApplicantResumePoco[] applicantResumePocos)
+        [Route("resume")]
+        public ActionResult DeleteApplicantResume([FromBody] ApplicantResumePoco[] applicantResumePocos)
         {
             _logic.Delete(applicantResumePocos);
             return Ok();

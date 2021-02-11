@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using CareerCloud.BusinessLogicLayer;
 using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
-
+using System.Web.Http.Description;
 
 namespace CareerCloud.WebAPI.Controllers
 {
@@ -24,8 +24,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("language/{systemLanguageCodeId")]
-
+        [Route("language/{systemLanguageCodeId}")]
+        [ResponseType(typeof(SystemLanguageCodePoco))]
         public ActionResult GetSystemLanguageCode(String systemLanguageCodeId)
         {
             SystemLanguageCodePoco poco = _logic.Get(systemLanguageCodeId);
@@ -38,7 +38,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("language/}")]
+        [Route("language")]
+        [ResponseType(typeof(List<SystemLanguageCodePoco>))]
         public ActionResult GetAllSystemLanguageCode()
         {
 
@@ -54,23 +55,23 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("language/")]
-        public ActionResult PostSystemLanguageCode(SystemLanguageCodePoco[] systemLanguageCodePocos)
+        [Route("language")]
+        public ActionResult PostSystemLanguageCode([FromBody] SystemLanguageCodePoco[] systemLanguageCodePocos)
         {
             _logic.Add(systemLanguageCodePocos);
             return Ok();
         }
 
         [HttpPut]
-        [Route("language/")]
-        public ActionResult PutSystemLanguageCode(SystemLanguageCodePoco[] systemLanguageCodePocos)
+        [Route("language")]
+        public ActionResult PutSystemLanguageCode([FromBody] SystemLanguageCodePoco[] systemLanguageCodePocos)
         {
             _logic.Update(systemLanguageCodePocos);
             return Ok();
         }
         [HttpDelete]
-        [Route("language/")]
-        public ActionResult DeleteSystemLanguageCode(SystemLanguageCodePoco[] systemLanguageCodePocos)
+        [Route("language")]
+        public ActionResult DeleteSystemLanguageCode([FromBody] SystemLanguageCodePoco[] systemLanguageCodePocos)
         {
             _logic.Delete(systemLanguageCodePocos);
             return Ok();

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CareerCloud.BusinessLogicLayer;
 using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
+using System.Web.Http.Description;
 
 namespace CareerCloud.WebAPI.Controllers
 {
@@ -23,8 +24,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("education/{companyJobEducationId")]
-
+        [Route("education/{companyJobEducationId}")]
+        [ResponseType(typeof(CompanyJobEducationPoco))]
         public ActionResult GetCompanyJobEducation(Guid companyJobEducationId)
         {
             CompanyJobEducationPoco poco = _logic.Get(companyJobEducationId);
@@ -37,7 +38,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("education/}")]
+        [Route("education")]
+        [ResponseType(typeof(List<CompanyJobEducationPoco>))]
         public ActionResult GetAllCompanyJobEducation()
         {
 
@@ -53,23 +55,23 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("education/")]
-        public ActionResult PostCompanyJobEducation(CompanyJobEducationPoco[] companyJobEducationPocos)
+        [Route("education")]
+        public ActionResult PostCompanyJobEducation([FromBody] CompanyJobEducationPoco[] companyJobEducationPocos)
         {
             _logic.Add(companyJobEducationPocos);
             return Ok();
         }
 
         [HttpPut]
-        [Route("education/")]
-        public ActionResult PutCompanyJobEducation(CompanyJobEducationPoco[] companyJobEducationPocos)
+        [Route("education")]
+        public ActionResult PutCompanyJobEducation([FromBody] CompanyJobEducationPoco[] companyJobEducationPocos)
         {
             _logic.Update(companyJobEducationPocos);
             return Ok();
         }
         [HttpDelete]
-        [Route("education/")]
-        public ActionResult DeleteCompanyJobEducation(CompanyJobEducationPoco[] companyJobEducationPocos)
+        [Route("education")]
+        public ActionResult DeleteCompanyJobEducation([FromBody] CompanyJobEducationPoco[] companyJobEducationPocos)
         {
             _logic.Delete(companyJobEducationPocos);
             return Ok();

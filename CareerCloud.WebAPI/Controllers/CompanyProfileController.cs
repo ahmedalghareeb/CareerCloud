@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CareerCloud.BusinessLogicLayer;
 using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
+using System.Web.Http.Description;
 
 namespace CareerCloud.WebAPI.Controllers
 {
@@ -23,8 +24,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("profile/{companyProfileId")]
-
+        [Route("profile/{companyProfileId}")]
+        [ResponseType(typeof(CompanyProfilePoco))]
         public ActionResult GetCompanyProfile(Guid companyProfileId)
         {
             CompanyProfilePoco poco = _logic.Get(companyProfileId);
@@ -37,7 +38,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("profile/}")]
+        [Route("profile")]
+        [ResponseType(typeof(List<CompanyProfilePoco>))]
         public ActionResult GetAllCompanyProfile()
         {
 
@@ -53,23 +55,23 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("profile/")]
-        public ActionResult PostCompanyProfile(CompanyProfilePoco[] companyProfilePocos)
+        [Route("profile")]
+        public ActionResult PostCompanyProfile([FromBody] CompanyProfilePoco[] companyProfilePocos)
         {
             _logic.Add(companyProfilePocos);
             return Ok();
         }
 
         [HttpPut]
-        [Route("profile/")]
-        public ActionResult PutCompanyProfile(CompanyProfilePoco[] companyProfilePocos)
+        [Route("profile")]
+        public ActionResult PutCompanyProfile([FromBody] CompanyProfilePoco[] companyProfilePocos)
         {
             _logic.Update(companyProfilePocos);
             return Ok();
         }
         [HttpDelete]
-        [Route("profile/")]
-        public ActionResult DeleteCompanyProfile(CompanyProfilePoco[] companyProfilePocos)
+        [Route("profile")]
+        public ActionResult DeleteCompanyProfile([FromBody] CompanyProfilePoco[] companyProfilePocos)
         {
             _logic.Delete(companyProfilePocos);
             return Ok();

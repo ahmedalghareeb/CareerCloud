@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http.Description;
 
 namespace CareerCloud.WebAPI.Controllers
 {
@@ -24,6 +25,7 @@ namespace CareerCloud.WebAPI.Controllers
 
         [HttpGet]
         [Route("profile/{applicantProfileId}")]
+        [ResponseType(typeof(ApplicantProfilePoco))]
         public ActionResult GetApplicantProfile(Guid applicantProfileId)
         {
 
@@ -39,7 +41,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("profile/}")]
+        [Route("profile")]
+        [ResponseType(typeof(List<ApplicantProfilePoco>))]
         public ActionResult GetAllApplicantProfile()
         {
 
@@ -55,23 +58,23 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("profile/")]
-        public ActionResult PostApplicantProfile(ApplicantProfilePoco[] applicantProfilePocos)
+        [Route("profile")]
+        public ActionResult PostApplicantProfile([FromBody] ApplicantProfilePoco[] applicantProfilePocos)
         {
             _logic.Add(applicantProfilePocos);
             return Ok();
         }
 
         [HttpPut]
-        [Route("profile/")]
-        public ActionResult PutApplicantProfile(ApplicantProfilePoco[] applicantProfilePocos)
+        [Route("profile")]
+        public ActionResult PutApplicantProfile([FromBody] ApplicantProfilePoco[] applicantProfilePocos)
         {
             _logic.Update(applicantProfilePocos);
             return Ok();
         }
         [HttpDelete]
-        [Route("profile/")]
-        public ActionResult DeleteApplicantProfile(ApplicantProfilePoco[] applicantProfilePocos)
+        [Route("profile")]
+        public ActionResult DeleteApplicantProfile([FromBody] ApplicantProfilePoco[] applicantProfilePocos)
         {
             _logic.Delete(applicantProfilePocos);
             return Ok();

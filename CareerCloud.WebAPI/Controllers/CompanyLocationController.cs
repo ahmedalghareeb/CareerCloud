@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CareerCloud.BusinessLogicLayer;
 using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
+using System.Web.Http.Description;
 
 namespace CareerCloud.WebAPI.Controllers
 {
@@ -24,8 +25,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("location/{companyLocationId")]
-
+        [Route("location/{companyLocationId}")]
+        [ResponseType(typeof(CompanyLocationPoco))]
         public ActionResult GetCompanyLocation(Guid companyLocationId)
         {
             CompanyLocationPoco poco = _logic.Get(companyLocationId);
@@ -38,7 +39,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("location/}")]
+        [Route("location")]
+        [ResponseType(typeof(List<CompanyLocationPoco>))]
         public ActionResult GetAllCompanyLocation()
         {
 
@@ -54,23 +56,23 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("location/")]
-        public ActionResult PostCompanyLocation(CompanyLocationPoco[] companyLocationPocos)
+        [Route("location")]
+        public ActionResult PostCompanyLocation([FromBody] CompanyLocationPoco[] companyLocationPocos)
         {
             _logic.Add(companyLocationPocos);
             return Ok();
         }
 
         [HttpPut]
-        [Route("location/")]
-        public ActionResult PutCompanyLocation(CompanyLocationPoco[] companyLocationPocos)
+        [Route("location")]
+        public ActionResult PutCompanyLocation([FromBody] CompanyLocationPoco[] companyLocationPocos)
         {
             _logic.Update(companyLocationPocos);
             return Ok();
         }
         [HttpDelete]
-        [Route("location/")]
-        public ActionResult DeleteCompanyLocation(CompanyLocationPoco[] companyLocationPocos)
+        [Route("location")]
+        public ActionResult DeleteCompanyLocation([FromBody] CompanyLocationPoco[] companyLocationPocos)
         {
             _logic.Delete(companyLocationPocos);
             return Ok();

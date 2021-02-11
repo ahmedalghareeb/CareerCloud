@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http.Description;
 
 namespace CareerCloud.WebAPI.Controllers
 {
@@ -23,8 +24,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("description/{companyDescriptionId")]
-
+        [Route("description/{companyDescriptionId}")]
+        [ResponseType(typeof(CompanyDescriptionPoco))]
         public ActionResult GetCompanyDescription(Guid companyDescriptionId)
         {
             CompanyDescriptionPoco poco = _logic.Get(companyDescriptionId);
@@ -37,7 +38,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
         
         [HttpGet]
-        [Route("description/}")]
+        [Route("description")]
+        [ResponseType(typeof(List<CompanyDescriptionPoco>))]
         public ActionResult GetAllCompanyDescription()
         {
 
@@ -53,23 +55,23 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("description/")]
-        public ActionResult PostCompanyDescription(CompanyDescriptionPoco[] companyDescriptionPocos)
+        [Route("description")]
+        public ActionResult PostCompanyDescription([FromBody] CompanyDescriptionPoco[] companyDescriptionPocos)
         {
             _logic.Add(companyDescriptionPocos);
             return Ok();
         }
 
         [HttpPut]
-        [Route("description/")]
-        public ActionResult PutCompanyDescription(CompanyDescriptionPoco[] companyDescriptionPocos)
+        [Route("description")]
+        public ActionResult PutCompanyDescription([FromBody] CompanyDescriptionPoco[] companyDescriptionPocos)
         {
             _logic.Update(companyDescriptionPocos);
             return Ok();
         }
         [HttpDelete]
-        [Route("description/")]
-        public ActionResult DeleteCompanyDescription(CompanyDescriptionPoco[] companyDescriptionPocos)
+        [Route("description")]
+        public ActionResult DeleteCompanyDescription([FromBody] CompanyDescriptionPoco[] companyDescriptionPocos)
         {
             _logic.Delete(companyDescriptionPocos);
             return Ok();

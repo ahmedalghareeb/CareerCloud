@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using CareerCloud.BusinessLogicLayer;
 using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
-
+using System.Web.Http.Description;
 
 namespace CareerCloud.WebAPI.Controllers
 {
@@ -24,8 +24,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("country/{systemCountryCodeId")]
-
+        [Route("country/{systemCountryCodeId}")]
+        [ResponseType(typeof(SystemCountryCodePoco))]
         public ActionResult GetSystemCountryCode(String systemCountryCodeId)
         {
             SystemCountryCodePoco poco = _logic.Get(systemCountryCodeId);
@@ -38,7 +38,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("country/}")]
+        [Route("country")]
+        [ResponseType(typeof(List<SystemCountryCodePoco>))]
         public ActionResult GetAllSystemCountryCode()
         {
 
@@ -54,23 +55,23 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("country/")]
-        public ActionResult PostSystemCountryCode(SystemCountryCodePoco[] systemCountryCodePocos)
+        [Route("country")]
+        public ActionResult PostSystemCountryCode([FromBody] SystemCountryCodePoco[] systemCountryCodePocos)
         {
             _logic.Add(systemCountryCodePocos);
             return Ok();
         }
 
         [HttpPut]
-        [Route("country/")]
-        public ActionResult PutSystemCountryCode(SystemCountryCodePoco[] systemCountryCodePocos)
+        [Route("country")]
+        public ActionResult PutSystemCountryCode([FromBody] SystemCountryCodePoco[] systemCountryCodePocos)
         {
             _logic.Update(systemCountryCodePocos);
             return Ok();
         }
         [HttpDelete]
-        [Route("country/")]
-        public ActionResult DeleteSystemCountryCode(SystemCountryCodePoco[] systemCountryCodePocos)
+        [Route("country")]
+        public ActionResult DeleteSystemCountryCode([FromBody] SystemCountryCodePoco[] systemCountryCodePocos)
         {
             _logic.Delete(systemCountryCodePocos);
             return Ok();

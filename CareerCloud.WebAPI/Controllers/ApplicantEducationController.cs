@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
+using System.Web.Http.Description;
 
 namespace CareerCloud.WebAPI.Controllers
 {
@@ -23,6 +24,7 @@ namespace CareerCloud.WebAPI.Controllers
 
         [HttpGet]
         [Route("education/{applicantEducationId}")]
+        [ResponseType(typeof(ApplicantEducationPoco))]
         public ActionResult GetApplicantEducation(Guid applicantEducationId)
         {
             
@@ -38,7 +40,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("education/}")]
+        [Route("education")]
+        [ResponseType(typeof(List<ApplicantEducationPoco>))]
         public ActionResult GetAllApplicantEducation()
         {
 
@@ -54,23 +57,23 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("education/")]
-        public ActionResult PostApplicantEducation(ApplicantEducationPoco[] applicantEducationPocos)
+        [Route("education")]
+        public ActionResult PostApplicantEducation([FromBody] ApplicantEducationPoco[] applicantEducationPocos)
         {
                 _logic.Add(applicantEducationPocos);
                 return Ok();
         }
 
         [HttpPut]
-        [Route("education/")]
-        public ActionResult PutApplicantEducation(ApplicantEducationPoco[] applicantEducationPocos)
+        [Route("education")]
+        public ActionResult PutApplicantEducation([FromBody]  ApplicantEducationPoco[] applicantEducationPocos)
         {
             _logic.Update(applicantEducationPocos);
             return Ok();
         }
         [HttpDelete]
-        [Route("education/")]
-        public ActionResult DeleteApplicantEducation(ApplicantEducationPoco[] applicantEducationPocos)
+        [Route("education")]
+        public ActionResult DeleteApplicantEducation([FromBody]  ApplicantEducationPoco[] applicantEducationPocos)
         {
             _logic.Delete(applicantEducationPocos);
             return Ok();

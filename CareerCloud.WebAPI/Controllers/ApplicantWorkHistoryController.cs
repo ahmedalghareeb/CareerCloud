@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http.Description;
 
 namespace CareerCloud.WebAPI.Controllers
 {
@@ -25,6 +26,7 @@ namespace CareerCloud.WebAPI.Controllers
 
         [HttpGet]
         [Route("work/{applicantWorkId}")]
+        [ResponseType(typeof(ApplicantWorkHistoryPoco))]
         public ActionResult GetApplicantWorkHistory(Guid applicantWorkId)
         {
 
@@ -40,7 +42,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("work/}")]
+        [Route("work")]
+        [ResponseType(typeof(List<ApplicantWorkHistoryPoco>))]
         public ActionResult GetAllApplicantWorkHistory()
         {
 
@@ -56,23 +59,23 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("work/")]
-        public ActionResult PostApplicantWorkHistory(ApplicantWorkHistoryPoco[] applicantWorkHistoryPocos)
+        [Route("work")]
+        public ActionResult PostApplicantWorkHistory([FromBody] ApplicantWorkHistoryPoco[] applicantWorkHistoryPocos)
         {
             _logic.Add(applicantWorkHistoryPocos);
             return Ok();
         }
 
         [HttpPut]
-        [Route("work/")]
-        public ActionResult PutApplicantWorkHistory(ApplicantWorkHistoryPoco[] applicantWorkHistoryPocos)
+        [Route("work")]
+        public ActionResult PutApplicantWorkHistory([FromBody] ApplicantWorkHistoryPoco[] applicantWorkHistoryPocos)
         {
             _logic.Update(applicantWorkHistoryPocos);
             return Ok();
         }
         [HttpDelete]
-        [Route("work/")]
-        public ActionResult DeleteApplicantWorkHistory(ApplicantWorkHistoryPoco[] applicantWorkHistoryPocos)
+        [Route("work")]
+        public ActionResult DeleteApplicantWorkHistory([FromBody] ApplicantWorkHistoryPoco[] applicantWorkHistoryPocos)
         {
             _logic.Delete(applicantWorkHistoryPocos);
             return Ok();

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CareerCloud.BusinessLogicLayer;
 using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
+using System.Web.Http.Description;
 
 namespace CareerCloud.WebAPI.Controllers
 {
@@ -23,8 +24,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("loginRole/{securityLoginsRoleId")]
-
+        [Route("loginRole/{securityLoginsRoleId}")]
+        [ResponseType(typeof(SecurityLoginsRolePoco))]
         public ActionResult GetSecurityLoginsRole(Guid securityLoginsRoleId)
         {
             SecurityLoginsRolePoco poco = _logic.Get(securityLoginsRoleId);
@@ -37,7 +38,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("loginRole/}")]
+        [Route("loginRole")]
+        [ResponseType(typeof(List<SecurityLoginsRolePoco>))]
         public ActionResult GetAllSecurityLoginsRole()
         {
 
@@ -53,23 +55,23 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("loginRole/")]
-        public ActionResult PostSecurityLoginRole(SecurityLoginsRolePoco[] securityLoginsRolePocos)
+        [Route("loginRole")]
+        public ActionResult PostSecurityLoginRole([FromBody] SecurityLoginsRolePoco[] securityLoginsRolePocos)
         {
             _logic.Add(securityLoginsRolePocos);
             return Ok();
         }
 
         [HttpPut]
-        [Route("loginRole/")]
-        public ActionResult PutSecurityLoginRole(SecurityLoginsRolePoco[] securityLoginsRolePocos)
+        [Route("loginRole")]
+        public ActionResult PutSecurityLoginRole([FromBody] SecurityLoginsRolePoco[] securityLoginsRolePocos)
         {
             _logic.Update(securityLoginsRolePocos);
             return Ok();
         }
         [HttpDelete]
-        [Route("loginRole/")]
-        public ActionResult DeleteSecurityLoginRole(SecurityLoginsRolePoco[] securityLoginsRolePocos)
+        [Route("loginRole")]
+        public ActionResult DeleteSecurityLoginRole([FromBody] SecurityLoginsRolePoco[] securityLoginsRolePocos)
         {
             _logic.Delete(securityLoginsRolePocos);
             return Ok();

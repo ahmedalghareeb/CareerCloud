@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CareerCloud.BusinessLogicLayer;
 using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
+using System.Web.Http.Description;
 
 namespace CareerCloud.WebAPI.Controllers
 {
@@ -23,7 +24,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("job/{companyJobId")]
+        [Route("job/{companyJobId}")]
+        [ResponseType(typeof(CompanyJobPoco))]
 
         public ActionResult GetCompanyJob(Guid companyDescriptionId)
         {
@@ -37,7 +39,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("job/}")]
+        [Route("job")]
+        [ResponseType(typeof(List<CompanyJobPoco>))]
         public ActionResult GetAllCompanyJob()
         {
 
@@ -53,23 +56,23 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("job/")]
-        public ActionResult PostCompanyJob(CompanyJobPoco[] companyJobPocos)
+        [Route("job")]
+        public ActionResult PostCompanyJob([FromBody] CompanyJobPoco[] companyJobPocos)
         {
             _logic.Add(companyJobPocos);
             return Ok();
         }
 
         [HttpPut]
-        [Route("job/")]
-        public ActionResult PutCompanyJob(CompanyJobPoco[] companyJobPocos)
+        [Route("job")]
+        public ActionResult PutCompanyJob([FromBody] CompanyJobPoco[] companyJobPocos)
         {
             _logic.Update(companyJobPocos);
             return Ok();
         }
         [HttpDelete]
-        [Route("job/")]
-        public ActionResult DeleteCompanyJob(CompanyJobPoco[] companyJobPocos)
+        [Route("job")]
+        public ActionResult DeleteCompanyJob([FromBody] CompanyJobPoco[] companyJobPocos)
         {
             _logic.Delete(companyJobPocos);
             return Ok();

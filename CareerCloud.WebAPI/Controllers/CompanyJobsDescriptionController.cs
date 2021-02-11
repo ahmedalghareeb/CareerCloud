@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CareerCloud.BusinessLogicLayer;
 using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
+using System.Web.Http.Description;
 
 namespace CareerCloud.WebAPI.Controllers
 {
@@ -24,8 +25,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("jobDescription/{companyJobDescriptionId")]
-
+        [Route("jobDescription/{companyJobDescriptionId}")]
+        [ResponseType(typeof(CompanyJobDescriptionPoco))]
         public ActionResult GetCompanyJobsDescription(Guid companyJobDescriptionId)
         {
             CompanyJobDescriptionPoco poco = _logic.Get(companyJobDescriptionId);
@@ -38,7 +39,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("jobDescription/}")]
+        [Route("jobDescription")]
+        [ResponseType(typeof(List<CompanyJobDescriptionPoco>))]
         public ActionResult GetCompanyJobsDescription()
         {
 
@@ -54,23 +56,23 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("jobDescription/")]
-        public ActionResult PostCompanyJobsDescription(CompanyJobDescriptionPoco[] companyJobDescriptionPocos)
+        [Route("jobDescription")]
+        public ActionResult PostCompanyJobsDescription([FromBody] CompanyJobDescriptionPoco[] companyJobDescriptionPocos)
         {
             _logic.Add(companyJobDescriptionPocos);
             return Ok();
         }
 
         [HttpPut]
-        [Route("jobDescription/")]
-        public ActionResult PutCompanyJobsDescription(CompanyJobDescriptionPoco[] companyJobDescriptionPocos)
+        [Route("jobDescription")]
+        public ActionResult PutCompanyJobsDescription([FromBody] CompanyJobDescriptionPoco[] companyJobDescriptionPocos)
         {
             _logic.Update(companyJobDescriptionPocos);
             return Ok();
         }
         [HttpDelete]
-        [Route("jobDescription/")]
-        public ActionResult DeleteCompanyJobsDescription(CompanyJobDescriptionPoco[] companyJobDescriptionPocos)
+        [Route("jobDescription")]
+        public ActionResult DeleteCompanyJobsDescription([FromBody] CompanyJobDescriptionPoco[] companyJobDescriptionPocos)
         {
             _logic.Delete(companyJobDescriptionPocos);
             return Ok();

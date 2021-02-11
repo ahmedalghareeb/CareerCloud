@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http.Description;
 
 namespace CareerCloud.WebAPI.Controllers
 {
@@ -24,6 +25,7 @@ namespace CareerCloud.WebAPI.Controllers
 
         [HttpGet]
         [Route("skill/{applicantSkillId}")]
+        [ResponseType(typeof(ApplicantSkillPoco))]
         public ActionResult GetApplicantSkill(Guid applicantSkillId)
         {
 
@@ -39,7 +41,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("skill/}")]
+        [Route("skill")]
+        [ResponseType(typeof(List<ApplicantSkillPoco>))]
         public ActionResult GetAllApplicantSkill()
         {
 
@@ -55,23 +58,23 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("skill/")]
-        public ActionResult PostApplicantSkill(ApplicantSkillPoco[] applicantSkillPocos)
+        [Route("skill")]
+        public ActionResult PostApplicantSkill([FromBody] ApplicantSkillPoco[] applicantSkillPocos)
         {
             _logic.Add(applicantSkillPocos);
             return Ok();
         }
 
         [HttpPut]
-        [Route("skill/")]
-        public ActionResult PutApplicantSkill(ApplicantSkillPoco[] applicantSkillPocos)
+        [Route("skill")]
+        public ActionResult PutApplicantSkill([FromBody] ApplicantSkillPoco[] applicantSkillPocos)
         {
             _logic.Update(applicantSkillPocos);
             return Ok();
         }
         [HttpDelete]
-        [Route("skill/")]
-        public ActionResult DeleteApplicantSkill(ApplicantSkillPoco[] applicantSkillPocos)
+        [Route("skill")]
+        public ActionResult DeleteApplicantSkill([FromBody] ApplicantSkillPoco[] applicantSkillPocos)
         {
             _logic.Delete(applicantSkillPocos);
             return Ok();

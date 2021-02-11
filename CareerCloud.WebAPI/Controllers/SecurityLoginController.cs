@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CareerCloud.BusinessLogicLayer;
 using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
+using System.Web.Http.Description;
 
 namespace CareerCloud.WebAPI.Controllers
 {
@@ -23,8 +24,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("login/{securityLoginId")]
-
+        [Route("login/{securityLoginId}")]
+        [ResponseType(typeof(SecurityLoginPoco))]
         public ActionResult GetSecurityLogin(Guid securityLoginId)
         {
             SecurityLoginPoco poco = _logic.Get(securityLoginId);
@@ -37,7 +38,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("login/}")]
+        [Route("login")]
+        [ResponseType(typeof(List<SecurityLoginPoco>))]
         public ActionResult GetAllSecurityLogin()
         {
 
@@ -53,23 +55,23 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("login/")]
-        public ActionResult PostSecurityLogin(SecurityLoginPoco[] securityLoginPocos)
+        [Route("login")]
+        public ActionResult PostSecurityLogin([FromBody] SecurityLoginPoco[] securityLoginPocos)
         {
             _logic.Add(securityLoginPocos);
             return Ok();
         }
 
         [HttpPut]
-        [Route("login/")]
-        public ActionResult PutSecurityLogin(SecurityLoginPoco[] securityLoginPocos)
+        [Route("login")]
+        public ActionResult PutSecurityLogin([FromBody] SecurityLoginPoco[] securityLoginPocos)
         {
             _logic.Update(securityLoginPocos);
             return Ok();
         }
         [HttpDelete]
-        [Route("login/")]
-        public ActionResult DeleteSecurityLogin(SecurityLoginPoco[] securityLoginPocos)
+        [Route("login")]
+        public ActionResult DeleteSecurityLogin([FromBody] SecurityLoginPoco[] securityLoginPocos)
         {
             _logic.Delete(securityLoginPocos);
             return Ok();

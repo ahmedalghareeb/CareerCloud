@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CareerCloud.BusinessLogicLayer;
 using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
+using System.Web.Http.Description;
 
 namespace CareerCloud.WebAPI.Controllers
 {
@@ -23,8 +24,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("jobSkill/{companyJobSkillId")]
-
+        [Route("jobSkill/{companyJobSkillId}")]
+        [ResponseType(typeof(CompanyJobSkillPoco))]
         public ActionResult GetCompanyJobSkill(Guid companyJobSkillId)
         {
             CompanyJobSkillPoco poco = _logic.Get(companyJobSkillId);
@@ -37,7 +38,8 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("jobSkill/}")]
+        [Route("jobSkill")]
+        [ResponseType(typeof(List<CompanyJobSkillPoco>))]
         public ActionResult GetAllCompanyJobSkill()
         {
 
@@ -53,23 +55,23 @@ namespace CareerCloud.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("jobSkill/")]
-        public ActionResult PostCompanyJobSkill(CompanyJobSkillPoco[] companyJobSkillPocos)
+        [Route("jobSkill")]
+        public ActionResult PostCompanyJobSkill([FromBody] CompanyJobSkillPoco[] companyJobSkillPocos)
         {
             _logic.Add(companyJobSkillPocos);
             return Ok();
         }
 
         [HttpPut]
-        [Route("jobSkill/")]
-        public ActionResult PutCompanyJobSkill(CompanyJobSkillPoco[] companyJobSkillPocos)
+        [Route("jobSkill")]
+        public ActionResult PutCompanyJobSkill([FromBody] CompanyJobSkillPoco[] companyJobSkillPocos)
         {
             _logic.Update(companyJobSkillPocos);
             return Ok();
         }
         [HttpDelete]
-        [Route("jobSkill/")]
-        public ActionResult DeleteCompanyJobSkill(CompanyJobSkillPoco[] companyJobSkillPocos)
+        [Route("jobSkill")]
+        public ActionResult DeleteCompanyJobSkill([FromBody] CompanyJobSkillPoco[] companyJobSkillPocos)
         {
             _logic.Delete(companyJobSkillPocos);
             return Ok();
