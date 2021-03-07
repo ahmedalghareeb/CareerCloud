@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "CareerCloud.gRPC.Protos";
+
+package CareerCloud.gRPC;
+
+service ApplicantProfileServic{
+	rpc GetApplicantProfile(ApplicantProfileIdRequest) returns (ApplicantProfile);
+	rpc CreateApplicantProfile(ApplicantProfiles) returns (google.protobuf.Empty);
+	rpc UpdateApplicantProfile(ApplicantProfiles) returns (google.protobuf.Empty);
+	rpc DeleteApplicantProfile(ApplicantProfiles) returns (google.protobuf.Empty);
+}
+
+message ApplicantProfileIdRequest{
+		string Id = 1;
+	}
+
+message ApplicantProfile{
+
+	string Id = 1;
+	string Login = 2;	
+	double  CurrentSalary = 3;
+    double	CurrentRate = 4;
+    string Currency = 5;
+    string Country = 6;
+    string Province = 7;
+    string Street =8;
+    string City =9;
+    string PostalCode =10;
+}
+
+message ApplicantProfiles{
+	repeated ApplicantProfile appProfile = 1;
+}
